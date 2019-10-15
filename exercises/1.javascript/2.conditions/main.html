@@ -1,74 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, paper, scissors, ...</title>
 </head>
+
 <body>
-<h1>Rock, Paper, Scissors....</h1>
-<h2>Lizard, Spock!</h2>
+    <h1>Rock, Paper, Scissors....</h1>
+    <h2>Lizard, Spock!</h2>
 
-<div>
-    <h3>Amount of players</h3>
-    <select name="players" id="players">
-        <option value="1">1 Player</option>
-        <option value="2">2 Players</option>
-    </select>
-</div>
+    <div>
+        <h3>Amount of players</h3>
+        <select name="players" id="players">
+            <option value="1">1 Player</option>
+            <option value="2">2 Players</option>
+        </select>
+    </div>
 
-<div>
-    <h3>Player 1</h3>
-    <select name="p1choice" id="p1choice"></select>
-</div>
+    <div>
+        <h3>Player 1</h3>
+        <select name="p1choice" id="p1choice"></select>
+    </div>
 
-<div>
-    <h3>Player 2</h3>
-    <select name="p2choice" id="p2choice" disabled></select>
-</div>
+    <div>
+        <h3>Player 2</h3>
+        <select name="p2choice" id="p2choice" disabled></select>
+    </div>
 
-<button id="play">Play</button>
+    <button id="play">Play</button>
 
-<div id="result"></div>
+    <div id="result"></div>
 
-<script>
-    let play = document.getElementById("play");
-    play.addEventListener("click", playGame);
-    let players = document.getElementById("players");
-    players.addEventListener("change", changeGame);
-    let p1choice = document.getElementById("p1choice");
-    let p2choice = document.getElementById("p2choice");
-    let choices = ["rock", "paper", "scissors"];
-    for (choice of choices) {
-        let element = document.createElement("option");
-        element.value = choice;
-        element.innerHTML = choice;
-        p1choice.append(element);
-    }
-    for (choice of choices) {
-        let element = document.createElement("option");
-        element.value = choice;
-        element.innerHTML = choice;
-        p2choice.append(element);
-    }
-    function playGame(event){
-        let p1value = p1choice.value;
-        let p2value;
-        if (p2choice.disabled === false) {
-            p2value = p2choice.value;
+    <script>
+        let play = document.getElementById("play");
+        play.addEventListener("click", playGame);
+        let players = document.getElementById("players");
+        players.addEventListener("change", changeGame);
+        let p1choice = document.getElementById("p1choice");
+        let p2choice = document.getElementById("p2choice");
+        let choices = ["rock", "paper", "scissors", "lizard", "spock"];
+        for (choice of choices) {
+            let element = document.createElement("option");
+            element.value = choice;
+            element.innerHTML = choice;
+            p1choice.append(element);
         }
-        else {
-            p2value = choices[Math.floor(Math.random()*choices.length)];
+        for (choice of choices) {
+            let element = document.createElement("option");
+            element.value = choice;
+            element.innerHTML = choice;
+            p2choice.append(element);
         }
-    }
-    function changeGame(event){
-        if (players.value === "1") {
-            p2choice.disabled = true;
+
+        function playGame(event) {
+            let p1value = p1choice.value;
+            let p2value;
+            if (p2choice.disabled === false) {
+                p2value = p2choice.value;
+                showResult();
+            } else {
+                p2value = choices[Math.floor(Math.random() * choices.length)];
+                showResult1P(p2value);
+            }
+
         }
-        else {
-            p2choice.disabled = false;
+
+        function changeGame(event) {
+            if (players.value === "1") {
+                p2choice.disabled = true;
+            } else {
+                p2choice.disabled = false;
+            }
         }
-    }
-</script>
+
+        //Player versus Player
+
+        function showResult() {
+            let p1value = p1choice.value;
+            let p2value = p2choice.value;
+
+
+            if (p1value == p2value) {
+                console.log("Draw");
+                document.getElementById("result").innerHTML = "Draw"; //draw
+
+
+                //PVP ROCK
+
+            } else if ((p1value == choices[0]) && (p2value == choices[1])) {
+                console.log("Player 2 wins")
+                document.getElementById("result").innerHTML =
+                    "Paper covered rock and the latter was never seen again. Player 2 wins!"; //rock vs paper
+
+            } else if ((p1value == choices[0]) && (p2value == choices[2])) {
+                console.log("Player 1 wins");
+                document.getElementById("result").innerHTML = "Rock crushes Scissors! Player 1 wins"; //rock vs scissors
+
+            } else if ((p1value == choices[0]) && (p2value == choices[3])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML = "Rock crushes Lizard! Player 1 wins"; //rock vs lizard
+
+            } else if ((p1value == choices[0]) && (p2value == choices[4])) {
+                console.log("Player 1 wins");
+                document.getElementById("result").innerHTML = "Spock vaporizes Rock! Player 2 wins"; //rock vs spock
+
+                //PVP PAPER
+
+            } else if ((p1value == choices[1]) && (p2value == choices[0])) {
+                console.log("Player 1 wins");
+                document.getElementById("result").innerHTML = "Paper covers rock! Player 1 wins"; //paper vs rock
+
+            } else if ((p1value == choices[1]) && (p2value == choices[2])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML = "Scissors cut paper! Player 2 wins"; // paper vs scissors
+
+            } else if ((p1value == choices[1]) && (p2value == choices[3])) {
+                console.log("Player 1 wins");
+                document.getElementById("result").innerHTML = "Lizard eats paper! Player 2 wins"; //paper vs lizard
+
+            } else if ((p1value == choices[1]) && (p2value == choices[4])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML = "Paper disproves Spock! Player 1 wins"; // paper vs spock
+
+                //PVP SCISSORS
+
+            } else if ((p1value == choices[2]) && (p2value == choices[0])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML = "Rock crushes Scissors! Player 2 wins"; //scissors vs rock
+
+            } else if ((p1value == choices[2]) && (p2value == choices[1])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML = "Scissors cut paper! Player 1 wins"; // scissors vs paper
+
+            } else if ((p1value == choices[2]) && (p2value == choices[3])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML =
+                    "Scissors decapitate lizard! Player 1 wins"; //scissors vs lizard
+
+
+            } else if ((p1value == choices[2]) && (p2value == choices[4])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML =
+                    "Spock smashes scissors! Player 2 wins"; // scissors vs spock
+
+                //PVP LIZARD
+
+            } else if ((p1value == choices[3]) && (p2value == choices[0])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML = "Rock crushes Lizard! Player 2 wins"; //lizard vs rock
+
+            } else if ((p1value == choices[3]) && (p2value == choices[1])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML = "Lizard eats paper! Player 1 wins"; //lizard vs paper
+
+            } else if ((p1value == choices[3]) && (p2value == choices[2])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML =
+                    "Scissors decapitate lizard! Player 2 wins"; //lizard vs scissors
+
+            } else if ((p1value == choices[3]) && (p2value == choices[4])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML = "Lizard poisons Spock! Player 1 wins"; //lizard vs spock
+
+                //PVP SPOCK
+
+            } else if ((p1value == choices[4]) && (p2value == choices[2])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML = "Spock vaporizes Rock! Player 1 wins"; // spock vs rock
+
+            } else if ((p1value == choices[4]) && (p2value == choices[2])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML = "Paper disproves Spock! Player 2 wins"; // spock vs paper
+
+            } else if ((p1value == choices[4]) && (p2value == choices[2])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML =
+                    "Spock smashes scissors! Player 1 wins"; // spock vs scissors
+
+            } else if ((p1value == choices[4]) && (p2value == choices[2])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML = "Lizard poisons Spock! Player 2 wins"; // spock vs lizard
+
+            } else {
+                console.log("Player 1 wins");
+                document.getElementById("result").innerHTML = "Player 1 wins";
+            }
+        }
+
+
+        // AGAINST MACHINES
+
+        function showResult1P(p2value) {
+            let p1value = p1choice.value;
+            let compResult = p2value;
+
+            if (p1value == p2value) {
+                console.log("Draw");
+                document.getElementById("result").innerHTML = "Draw"; //draw
+
+
+                //PC ROCK
+
+            } else if ((p1value == choices[0]) && (compResult == choices[1])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML = "Paper covers rock! Computer wins"; //rock vs paper
+
+            } else if ((p1value == choices[0]) && (compResult == choices[2])) {
+                console.log("Player 1 wins");
+                document.getElementById("result").innerHTML = "Rock crushes Scissors! Player 1 wins"; //rock vs scissors
+
+            } else if ((p1value == choices[0]) && (compResult == choices[3])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML = "Rock crushes Lizard! Player 1 wins"; //rock vs lizard
+
+            } else if ((p1value == choices[0]) && (compResult == choices[4])) {
+                console.log("Player 1 wins");
+                document.getElementById("result").innerHTML = "Spock vaporizes Rock! Computer wins"; //rock vs spock
+
+                //PC PAPER
+
+            } else if ((p1value == choices[1]) && (compResult == choices[0])) {
+                console.log("Player 1 wins");
+                document.getElementById("result").innerHTML = "Paper covers rock! Player 1 wins"; //paper vs rock
+
+            } else if ((p1value == choices[1]) && (compResult == choices[2])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML = "Scissors cut paper! Computer wins"; // paper vs scissors
+
+            } else if ((p1value == choices[1]) && (compResult == choices[3])) {
+                console.log("Player 1 wins");
+                document.getElementById("result").innerHTML = "Lizard eats paper! Computer wins"; //paper vs lizard
+
+            } else if ((p1value == choices[1]) && (compResult == choices[4])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML = "Paper disproves Spock! Player 1 wins"; // paper vs spock
+
+                //PC PAPER
+
+            } else if ((p1value == choices[2]) && (compResult == choices[0])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML =
+                    "Rock crushes Scissors! Computer wins "; //scissors vs rock
+
+            } else if ((p1value == choices[2]) && (compResult == choices[1])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML = "Scissors cut paper! Player 1 wins"; // scissors vs paper
+
+            } else if ((p1value == choices[2]) && (compResult == choices[3])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML =
+                    "Scissors decapitate lizard! Player 1 wins"; //scissors vs lizard
+
+
+            } else if ((p1value == choices[2]) && (compResult == choices[4])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML =
+                    "Spock smashes scissors! Computer wins "; // scissors vs spock
+
+                //PC PAPER
+
+            } else if ((p1value == choices[3]) && (compResult == choices[0])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML =
+                    "Rock crushes Lizard! Computer wins "; //lizard vs rock
+
+            } else if ((p1value == choices[3]) && (compResult == choices[1])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML = "Lizard eats paper! Player 1 wins"; //lizard vs paper
+
+            } else if ((p1value == choices[3]) && (compResult == choices[2])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML =
+                    "Scissors decapitate lizard! Computer wins "; //lizard vs scissors
+
+            } else if ((p1value == choices[3]) && (compResult == choices[4])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML = "Lizard poisons Spock! Player 1 wins"; //lizard vs spock
+
+                //PC PAPER
+
+            } else if ((p1value == choices[4]) && (compResult == choices[2])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML = "Spock vaporizes Rock! Player 1 wins"; // spock vs rock
+
+            } else if ((p1value == choices[4]) && (compResult == choices[2])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML =
+                    "Paper disproves Spock! Computer wins "; // spock vs paper
+
+            } else if ((p1value == choices[4]) && (compResult == choices[2])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML =
+                    "Spock smashes scissors! Player 1 wins"; // spock vs scissors
+
+            } else if ((p1value == choices[4]) && (compResult == choices[2])) {
+                console.log("Player 2 wins");
+                document.getElementById("result").innerHTML =
+                    "Lizard poisons Spock! Computer wins "; // spock vs lizard
+
+            } else {
+                console.log("Player 1 wins");
+                document.getElementById("result").innerHTML = "Player 1 wins";
+            }
+        }
+    </script>
 </body>
+
 </html>

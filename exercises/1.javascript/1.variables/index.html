@@ -1,15 +1,80 @@
 <!doctype html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Exercises index file</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="css/main.css">
-    </head>
-    <body>
-        
-        <p>Generally confused by all this, will make this perfect come the extended weekend.</p>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>The JS Lab</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Variables -->
+        <h2>Variables</h2>
+        <p id="doctor"></p>
+
+        <p id="demo"></p>
+
+        <!-- Data Types -->
+        <h2>Data Types</h2>
+        <h3>Number</h3>
+        <p>Witness as I multiply five by three!</p>
+        <p id="pNumber"></p>
+
+        <h3>Strings</h3>
+        <p id="pString"></p>
+
+        <h3>Boolean (logical)</h3>
+        <p id="pBoolean"></p>
+    </div id="wrapper">
+
+    <script>
+        //Experimenting with lets, vars, consts, console.log and console.dir
+        let doctorName = "Frederick Hunnington";
+        scientist();
+
+        function scientist() {
+            document.getElementById("doctor").innerHTML = "Behold the knowledge of the great doctor " + doctorName +
+                "!";
+            console.log("The doctor is in the console!")
+        }
+
+        function testMath(p1, p2) {
+            return p1 * p2;
+        }
+        document.getElementById("demo").innerHTML = testMath(4, 3);
+        console.dir(document.getElementById("demo"))
+
+        //let is restricted to its block
+        //var is restricted to its function
+        //const never changes
+        //console.log displays a message in the console if its variable works
+        //console.dir displays all the aspects of the element it is called to describe
+
+
+        //Experimenting with data types
+        //Number
+        function number() {
+            return 5 * 3;
+        }
+        document.getElementById("pNumber").innerHTML = number();
+        console.log("Would ya look at that, it's a number!");
+
+        //String
+
+
+
+        function string() {
+            document.getElementById("pString").innerHTML = "Let me put together a " + typeName + " for you!";
+            console.log("Can you believe it? That took twenty minutes to get a string in the console!");
+        }
+        let typeName = "string";
+        string();
+
+        //Boolean
+    </script>
+</body>
+
 </html>

@@ -27,6 +27,8 @@
         <p id="pString"></p>
 
         <h3>Boolean (logical)</h3>
+        <p>Lets find out whether or not ten is worth more than nine!</p>
+        <button onclick="functionBoolean()">Click me!</button>
         <p id="pBoolean"></p>
     </div id="wrapper">
 
@@ -74,6 +76,11 @@
         string();
 
         //Boolean
+
+        function functionBoolean() {
+            document.getElementById("pBoolean").innerHTML = Boolean(10 > 9);
+            console.log("Buttons to find out about booleans are fun!");
+        }
     </script>
 </body>
 

@@ -30,6 +30,33 @@
         <p>Lets find out whether or not ten is worth more than nine!</p>
         <button onclick="functionBoolean()">Click me!</button>
         <p id="pBoolean"></p>
+
+        <h3>Arrays</h3>
+        <p>Lets name some characters with an array.</p>
+        <p id="pArray"></p>
+
+        <!--- Operators-->
+        <h2>Operators</h2>
+
+        <h3>Addition</h3>
+        <p>Lets put two and two together:</p>
+        <p id="pAddition"></p>
+
+        <h3>Subtraction</h3>
+        <p>Lets subtract 5 by 3.</p>
+        <p id="pSubtraction"></p>
+
+        <h3>Multiplication</h3>
+        <p>Lets multiply 9 by 2.</p>
+        <p id="pMultiplication"></p>
+
+        <h3>Division</h3>
+        <p>Lets divide 6 by 3.</p>
+        <p id="pDivision"></p>
+
+        <h3>Remainder</h3>
+        <p>Lets see what remains after the division of five by two.</p>
+        <p id="pRemainder"></p>
     </div id="wrapper">
 
     <script>
@@ -38,7 +65,8 @@
         scientist();
 
         function scientist() {
-            document.getElementById("doctor").innerHTML = "Behold the knowledge of the great doctor " + doctorName +
+            document.getElementById("doctor").innerHTML = "Behold the knowledge of the great doctor " +
+                doctorName +
                 "!";
             console.log("The doctor is in the console!")
         }
@@ -57,14 +85,14 @@
 
 
         //Experimenting with data types
-        //Number
+        //Numbers: For when you need to purely use numbers
         function number() {
             return 5 * 3;
         }
         document.getElementById("pNumber").innerHTML = number();
         console.log("Would ya look at that, it's a number!");
 
-        //String
+        //String: Used to represent text. Always needs quotes of some kind
 
 
 
@@ -75,12 +103,62 @@
         let typeName = "string";
         string();
 
-        //Boolean
+        //Boolean: Used to simply determine whether or not a value is true or false.
 
         function functionBoolean() {
             document.getElementById("pBoolean").innerHTML = Boolean(10 > 9);
             console.log("Buttons to find out about booleans are fun!");
         }
+
+        //Arrays: A way to store multiple values inside of a single variable.
+
+        function functionArray() {
+            let characters = ["Frederick", " Victor", " Suria", " Jorgan"];
+            document.getElementById("pArray").innerHTML = characters;
+            console.log(
+                "Oh happy days :)"
+            );
+        }
+        functionArray();
+
+        //Time to get started with operators
+        //Addition: The + sign which, like in regular math, adds values together.
+        function functionAddition(x1, y1) {
+            return x1 + y1;
+        }
+        document.getElementById("pAddition").innerHTML = functionAddition(2, 2);
+
+        //Subtraction: The - sign which, like in regular math, subtracts a certain value from another value.
+        function functionSubtraction(x2, y2) {
+            return x2 - y2;
+        }
+        document.getElementById("pSubtraction").innerHTML = functionSubtraction(5, 3);
+
+        //Multiplication: The * sign which, like in regular math, multiplies a certain value with another value.
+        function functionMultiplication(x3, y3) {
+            return x3 * y3;
+        }
+        document.getElementById("pMultiplication").innerHTML = functionMultiplication(9, 2);
+
+        //Division: The / sign which, like in regular math, divides a certain value by another value.
+        function functionDivision(x4, y4) {
+            return x4 / y4;
+        }
+        document.getElementById("pDivision").innerHTML = functionDivision(6, 3);
+
+        //Remainder: The % sign which grants you the remainder of a division.
+        function functionRemainder(x5, y5) {
+            return x5 % y5;
+        }
+        document.getElementById("pRemainder").innerHTML = functionRemainder(5, 2);
+
+        //Incrementing: ++ increments numbers.
+        function functionIncrement(x6) {
+            return x6++;
+        }
+        document.getElementById("pIncrement").innerHTML = functionIncrement(5);
+
+        //Decrementing: -- decrements numbers.
     </script>
 </body>
 

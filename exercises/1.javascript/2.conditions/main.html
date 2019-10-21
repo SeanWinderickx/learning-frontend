@@ -90,32 +90,32 @@
                     //Tie
 
                 case ((p1value == choices[0]) && ((p2value == choices[2])(p2value == choices[3]))):
-                    document.getElementById("result").innerHTML = "P1 wins!";
+                    document.getElementById("result").innerHTML = "Player 1 wins!";
                     break;
                     //P1 rock wins
 
                 case ((p1value == choices[1]) && ((p2value == choices[0])(p2value == choices[4]))):
-                    document.getElementById("result").innerHTML = "P1 wins!";
+                    document.getElementById("result").innerHTML = "Player 1 wins!";
                     break;
                     //P1 paper wins
 
                 case ((p1value == choices[2]) && ((p2value == choices[1])(p2value == choices[3]))):
-                    document.getElementById("result").innerHTML = "P1 wins!";
+                    document.getElementById("result").innerHTML = "Player 1 wins!";
                     break;
                     //P1 scissors wins
 
                 case ((p1value == choices[3]) && ((p2value == choices[1])(p2value == choices[4]))):
-                    document.getElementById("result").innerHTML = "P1 wins!";
+                    document.getElementById("result").innerHTML = "Player 1 wins!";
                     break;
                     //P1 lizard wins
 
                 case ((p1value == choices[4]) && ((p2value == choices[0]) || (p2value == choices[2]))):
-                    document.getElementById("result").innerHTML = "P1 wins!";
+                    document.getElementById("result").innerHTML = "Player 1 wins!";
                     break;
                     //P1 spock wins
 
                 default:
-                    document.getElementById("result").innerHTML = "P2 wins!";
+                    document.getElementById("result").innerHTML = "Player 2 wins!";
             }
             console.log(p1value);
             console.log(p2value);
@@ -133,28 +133,28 @@
                     break;
                     //Tie
 
-                case ((p1value == choices[0]) && ((compvalue == choices[2])(compvalue == choices[3]))):
-                    document.getElementById("result").innerHTML = "P1 wins!";
+                case ((p1value == choices[0]) && ((compvalue == choices[2]) || (compvalue == choices[3]))):
+                    document.getElementById("result").innerHTML = "Player 1 wins!";
                     break;
                     //P1 rock wins
 
-                case ((p1value == choices[1]) && ((compvalue == choices[0])(compvalue == choices[4]))):
-                    document.getElementById("result").innerHTML = "P1 wins!";
+                case ((p1value == choices[1]) && ((compvalue == choices[0]) || (compvalue == choices[4]))):
+                    document.getElementById("result").innerHTML = "Player 1 wins!";
                     break;
                     //P1 paper wins
 
-                case ((p1value == choices[2]) && ((compvalue == choices[1])(compvalue == choices[3]))):
-                    document.getElementById("result").innerHTML = "P1 wins!";
+                case ((p1value == choices[2]) && ((compvalue == choices[1]) || (compvalue == choices[3]))):
+                    document.getElementById("result").innerHTML = "Player 1 wins!";
                     break;
                     //P1 scissors wins
 
-                case ((p1value == choices[3]) && ((compvalue == choices[1])(compvalue == choices[4]))):
-                    document.getElementById("result").innerHTML = "P1 wins!";
+                case ((p1value == choices[3]) && ((compvalue == choices[1]) || (compvalue == choices[4]))):
+                    document.getElementById("result").innerHTML = "Player 1 wins!";
                     break;
                     //P1 lizard wins
 
                 case ((p1value == choices[4]) && ((compvalue == choices[0]) || (compvalue == choices[2]))):
-                    document.getElementById("result").innerHTML = "P1 wins!";
+                    document.getElementById("result").innerHTML = "Player 1 wins!";
                     break;
                     //P1 spock wins
 

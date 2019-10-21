@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playing Field</title>
+
+    <link rel="stylesheet" href="resources/style.css">
+</head>
+
+<body>
+
+    <div>
+        <button id="generate">Generate</button>
+        <button id="random">Randomize!</button>
+    </div>
+
+    <div id="field"></div>
+
+
+    <script>
+        let field = document.getElementById("field");
+        let standard = document.getElementById("generate");
+        standard.addEventListener("click", generateField);
+        let random = document.getElementById("random");
+        random.addEventListener("click", makeRandom)
+
+        function generateField() {
+            var sum = 0;
+            for (var i = 1; i <= 10; i++) {
+                sum = sum + i;
+            }
+            document.getElementById("generate").onclick = alert("Sum = " + sum);
+        }
+
+        function makeRandom() {
+            /*
+            Write your code here to randomize the colors.
+            You could do this for example by making some classes in CSS with different color schemes,
+            and then asigning a random one to each cell.
+            */
+        }
+
+        function reset() {
+            field.innerHTML = "";
+        }
+    </script>
+
+</body>
+
+</html>

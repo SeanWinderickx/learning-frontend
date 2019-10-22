@@ -68,26 +68,41 @@
             Write your code here to generate a field as indicated in the image.
             For now you don't need to write any CSS. Any necessary classes are already provided!
             */
+            let pattern = true; // Makes the pattern initially start out as "true"
 
 
-            for (let i = 1; i < 101; i++) {
+            for (let i = 1; i <= 100; i++) { // increments from 1 to  100
+                let square = document.createElement("div"); //Creates the cell
+                square.classList.add("cell"); // Applies CSS to the cell
 
-                if (i % 2 == 0) {
-                    let square = document.createElement("div");
 
-                    square.classList.add("cell");
-                    field.append(square);
-                    console.log("square " + i);
-                } else {
-                    let square = document.createElement("div");
-                    square.classList.add("cell");
-                    square.classList.add("bgblack");
-                    field.append(square);
-                    console.log("square " + i);
+
+                console.log(pattern);
+                if (pattern == true) { // if true
+
+                    if (i % 2 == 0) {
+                        // if even, nothing extra happens
+                    } else {
+                        square.classList.add("bgblack");
+                        // if uneven, add black background
+                    }
+
+                } else { // if false
+                    if (i % 2 !== 0) { //Checks to see whether or not it's uneven.
+                    } else {
+                        square.classList.add("bgblack"); //adds black background
+                    }
                 }
+                if (i % 10 == 0) { // each new row
+                    pattern = !pattern; // switch pattern
+
+                }
+                square.innerHTML = i;
+                field.append(square);
+
 
             }
-        };
+        }
 
         function makeRandom() {
             /*

@@ -93,7 +93,7 @@
                 <button>5</button>
                 <button>6</button>
                 <button>1</button>
-                <button>2</button>
+                <button id="numberTwo">2</button>
                 <button>3</button>
                 <button>0</button>
             </ul>
@@ -123,11 +123,28 @@
             3. ......
         */
 
+        /*let hover = document.querySelectorAll("ul > button");
+        console.dir(hover);*/
+
+        let hover = document.getElementById("numberTwo");
+
+        hover.addEventListener("mouseover", function () {
+            hover.classList.add("hovering");
+            console.log("This works, yay!");
+        })
+        hover.addEventListener("mouseout", function () {
+            hover.classList.remove("hovering");
+            console.log("Thank god that's over");
+        })
+        console.log(hover);
+
+        //FAILED EXPERIMENTS. GLEAN INFO FROM AND TERMINATE WHEN APPROPRIATE. USE CORRECT INCINERATOR
+        /*
         function mouseOver() {
             let hover = document.getElementsByTagName("button");
             hover.classList.add("hovering");
             console.log("This hover works");
-        }
+        }*/
 
         /*button.onmouseover = function hover() {
             let button.classList.add("hovering");

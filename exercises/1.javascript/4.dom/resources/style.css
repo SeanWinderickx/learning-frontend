@@ -23,7 +23,7 @@ body {
     border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
-    max-width: 350px;
+    max-width: 400px;
     width: auto;
     height: 400px;
     background: #C00C0C;

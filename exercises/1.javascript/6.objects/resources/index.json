@@ -1,0 +1,10 @@
+{
+    "aboutMe": [{
+        "Name": "Sean",
+        "Age": 22,
+        "Gender": "Male",
+        "Favorite food": "Irish stew",
+        "Favorite series": "Gravity Falls",
+        "Single": "Nope"
+    }]
+}

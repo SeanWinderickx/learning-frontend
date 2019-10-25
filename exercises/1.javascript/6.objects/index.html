@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Objects</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <ul id="aboutMe"></ul>
+
+
+    <script>
+        /*let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let response = JSON.parse(xhttp.responseText);
+                let aboutMe = response.aboutMe;
+
+                let output = '';
+                for (let i = 0; i < aboutMe.length; i++) {
+                    output += '<li>' + aboutMe[i] + '</li>';
+
+                }
+                document.getElementById('aboutMe').innerHTML = output;
+            }
+        };
+        xhttp.open("GET", "resources/index.json", true);
+        xhttp.send();*/
+
+        let aboutMe = {
+            name: "Sean Winderickx",
+            age: 22,
+            gender: "Man",
+            favoriteFood: "Irish stew",
+            favoriteSeries: "Gravity Falls",
+            favoriteMovie: "The Nightmare Before Christmas",
+            single: "Nope"
+        };
+        Object.keys(aboutMe).forEach((key) => {
+            let list = document.getElementById("aboutMe");
+            let item = document.createElement("LI");
+            item.innerHTML = (key + ": " + aboutMe[key]);
+            list.appendChild(item);
+        })
+
+
+
+        /*for (let about in aboutMe) {
+            console.log(about + ": " + aboutMe[about])
+        }*/
+
+        function Person(first, last, age, gender, food, series, movie, single) {
+            this.firstName = first;
+            this.lastName = last;
+            this.age = age;
+            this.gender = gender;
+            this.food = food;
+            this.series = series;
+            this.movie = movie;
+            this.single = single;
+        }
+
+
+        let Annalisa = new Person("Sean", "Winderickx", 21, "Man", "Irish stew", "Gravity Falls",
+            "The Nightmare Before Christmas", "No");
+
+        let father = new Person("Marc", "Winderickx", 50, "Man", "Fries", "Breaking Bad",
+            "Terminator 2: Judgement Day", "No");
+
+        let mother = new Person("Tracy", "Telling", 49, "Woman", "Curry", "Great British Bakeoff",
+            "Love Actually", "No");
+
+
+        /*for (i = 0; i < aboutMe.length; i++) {
+            document.getElementById("aboutMe").innerHTML = "<li>" + aboutMe[i].first + "</li>";
+        }*/
+
+        //document.getElementById("aboutMe").innerHTML = "Fuck this shit " + aboutMe.age + ".";
+    </script>
+
+</body>
+
+</html>

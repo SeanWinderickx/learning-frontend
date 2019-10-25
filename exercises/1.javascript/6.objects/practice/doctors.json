@@ -1,0 +1,15 @@
+{
+    "doctors": [{
+            "name": "Frederick",
+            "age": 23
+        },
+        {
+            "name": "Victor",
+            "age": 27
+        },
+        {
+            "name": "Martha",
+            "age": 25
+        }
+    ]
+}

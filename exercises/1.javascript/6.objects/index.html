@@ -8,8 +8,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
+<style>
+    #ex3 {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .flex {
+        display: flex;
+        justify-content: center;
+    }
+
+    .card {
+        height: 600px;
+        width: 500px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background-color: rgb(160, 160, 160);
+        box-shadow: 10px 10px rgb(78, 78, 78);
+    }
+
+    .img {
+        border-radius: 50%;
+        margin-top: 10px;
+        width: 45%;
+        height: 40%;
+        margin: 5%;
+        border: 1px solid white;
+    }
+
+    button {
+        height: 10%;
+        width: 20%;
+        margin-left: 30%;
+        margin-right: 30%;
+    }
+
+    .descr-box {
+        height: 30%;
+        width: 100%;
+        margin-top: 10px;
+        margin: 5%;
+        font-size: 27px;
+        text-align: center;
+        color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .hidden {
+        visibility: hidden;
+    }
+</style>
+
 <body>
     <ul id="aboutMe"></ul>
+
+    <section id=ex3 class="flex">
+
+    </section>
 
 
     <script>
@@ -52,7 +110,9 @@
             console.log(about + ": " + aboutMe[about])
         }*/
 
-        function Person(first, last, age, gender, food, series, movie, single) {
+        //Exercise 2: Family constructors
+
+        function FamilyMember(imgName, first, last, age, gender, food, series, movie, single) {
             this.firstName = first;
             this.lastName = last;
             this.age = age;
@@ -61,17 +121,61 @@
             this.series = series;
             this.movie = movie;
             this.single = single;
+            this.createCard = function addCard() {
+                //CARD CONTAINER
+                let newDivCont = document.createElement("div"); //card container div
+                newDivCont.classList.add("card"); //class added
+                document.getElementById("ex3").appendChild(newDivCont); //append to section
+
+                //IMG
+                let newImg = document.createElement("img"); //img
+                newImg.classList.add("img"); //class added
+                newImg.src = "./resources/img/" + imgName + ".jpg"; //img src added
+                newDivCont.appendChild(newImg); //append to container div
+
+                //BTN
+                let newBtn = document.createElement("button"); //button created
+                newBtn.innerText = "click me!"; //text added
+                newBtn.addEventListener("click", toggleImg());
+                newDivCont.appendChild(newBtn); //append to container div
+
+                //DESCRIPTION
+                let newDivDescr = document.createElement("div"); //description div created
+                newDivDescr.innerText = "Stuff"; //descr
+                newDivDescr.classList.add("descr-box"); //class added
+                newDivCont.appendChild(newDivDescr); //append to container div
+
+                function toggleImg() { //what the function
+                    let imgShow = true;
+
+                    if (imgShow == true) {
+                        newImg.classList.remove("hidden");
+                        imgShow = false;
+                    } else {
+                        newImg.classList.add("hidden");
+                        imgShow = true;
+                    }
+                    console.log(imgShow);
+
+                };
+            }
         }
 
 
-        let Annalisa = new Person("Sean", "Winderickx", 21, "Man", "Irish stew", "Gravity Falls",
-            "The Nightmare Before Christmas", "No");
+        let sister = new FamilyMember("sister", "Annalisa", "Winderickx", 21, "Woman", "Anything vegan",
+            "Game of Thrones",
+            "Shrek 2", "No");
 
-        let father = new Person("Marc", "Winderickx", 50, "Man", "Fries", "Breaking Bad",
+        let father = new FamilyMember("father", "Marc", "Winderickx", 50, "Man", "Fries", "Breaking Bad",
             "Terminator 2: Judgement Day", "No");
 
-        let mother = new Person("Tracy", "Telling", 49, "Woman", "Curry", "Great British Bakeoff",
+        let mother = new FamilyMember("mother", "Tracy", "Telling", 49, "Woman", "Curry", "Great British Bakeoff",
             "Love Actually", "No");
+
+
+        sister.createCard();
+        father.createCard();
+        mother.createCard();
 
 
         /*for (i = 0; i < aboutMe.length; i++) {

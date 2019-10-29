@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+body {
+    background: url("torterra.jpg");
+    width: 100%;
+    height: 100%;
+}
+
+.search_bar {
+    margin: 20px;
+}
+
+.info {
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 400px;
+    width: auto;
+    height: 400px;
+    background: #C00C0C;
+    box-shadow: 3px 3px;
+    margin: 20px;
+    padding: 15px;
+    justify-content: center;
+    position: static;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.listBox {
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    width: 250px;
+    height: 800px;
+    position: static;
+    background: #C00C0C;
+    box-shadow: 3px 3px;
+    margin: 20px;
+    justify-content: center;
+    overflow-y: scroll;
+}
+
+#list {
+    list-style-type: none;
+    font-family: 'Press Start 2P', cursive;
+    line-height: 30px;
+    padding: 10px;
+    color: white;
+}
+
+.info_box {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid black;
+    background-color: #B1B1B1;
+    border-radius: 10px;
+}

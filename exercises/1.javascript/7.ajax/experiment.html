@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quote Website</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        background-color: rgb(223, 223, 223);
+    }
+
+    .wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    img {
+        display: block;
+        border-radius: 50%;
+        height: 200px;
+        width: 200px;
+        margin: 5% 45%;
+    }
+
+    button {
+        width: auto;
+        height: 20px;
+        margin: 20px;
+        max-width: 400px;
+        margin: 20px auto;
+        display: block;
+        background-color: white;
+        border: 1px solid black;
+    }
+
+    li,
+    h1 {
+        display: block;
+        list-style-type: none;
+        text-align: center;
+        margin: 20px;
+    }
+</style>
+
+<body>
+    <div class="wrapper">
+        <button id="button">Click me for a really subpar quote!</button>
+
+        <div id="quote"></div>
+    </div>
+
+    <script>
+        document.getElementById('button').addEventListener('click', loadQuote);
+
+        //Load your stupid quote
+        function loadQuote() {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://thatsthespir.it/api', true);
+
+            xhr.onload = function () {
+                if (this.status == 200) {
+                    let quotes = JSON.parse(this.responseText);
+
+                    console.log(quotes);
+
+                    let output =
+                        '<div class="quote">' +
+                        '<h1>' + quotes.quote + '</h1>' +
+                        //'<img src="' + quotes.photo + '">' +
+                        '<img src="' +
+                        if (quotes.photo == "") {
+                            let xhrKitty = new XMLHttpRequest();
+                            xhrKitty.open('GET', 'https://api.thecatapi.com/v1/images/search', true);
+                            xhrKitty.onload = function () {
+                                let quoteKitty = JSON.parse(this.responseText);
+                                console.log(quoteKitty);
+                            }
+                        } else {
+                            quotes.photo;
+                        } + '">' +
+                        '<ul>' +
+                        '<li> ' + quotes.author + '</li>' +
+                        '<li> ' + quotes.total_quotes + '</li>' +
+                        '</ul>' +
+                        '</div>';
+
+
+
+                    document.getElementById('quote').innerHTML = output;
+                }
+            }
+
+            xhr.send();
+        }
+    </script>
+</body>
+
+</html>

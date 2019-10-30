@@ -26,34 +26,62 @@ function typeWriter() {
     if (letterI < txt.length) {
         if (txt.charAt(letterI) !== ' ' && soundOn === true) {
             let audio = new Audio('resources/sound/voice_sans.mp3');
-            let music = new Audio('resources/sound/Megalovania.mp3');
             audio.play();
-            music.play();
         }
         document.getElementById("text").innerHTML += txt.charAt(letterI);
         letterI++;
         setTimeout(typeWriter, speed);
     }
+
 }
+
+
 
 //**************Sound handler****************** */
 
 let soundBut = document.getElementById('sound');
-let soundOn = true;
+let soundOn = false;
+
+let musicBut = document.getElementById('music');
+let musicOn = false;
+let musicStart = document.getElementById('themeSong');
 
 soundBut.onclick = toggleSound;
+musicBut.onclick = toggleMusic;
 
 function toggleSound() {
     if (soundOn == true) {
         soundBut.innerHTML = 'Sound:off';
         soundOn = false;
+        console.log("Sound's off");
     } else {
         soundBut.innerHTML = 'Sound:on';
         soundOn = true;
+        console.log("Sound's on");
     }
 }
 
-startpun = [`So..           Nick told me you would come.                                 Well  what are you waiting for? Write this code!  `]
+function toggleMusic() {
+
+    if (musicOn == true) {
+        musicBut.innerHTML = 'Music:off';
+        musicOn = false;
+        console.log("bad time music off");
+        let musicId = document.getElementById('themeSong');
+        musicId.muted = true;
+    } else {
+        musicBut.innerHTML = 'Music:on';
+        musicOn = true;
+        musicStart.play();
+        let musicId = document.getElementById('themeSong');
+        musicId.muted = false;
+        console.log("bad time music on");
+    }
+
+
+}
+
+startpun = [`In carnage..           I bloom.                          Like a flower in the dawn!  `]
 randomPun(startpun);
 
 let dont = [];

@@ -26,7 +26,9 @@ function typeWriter() {
     if (letterI < txt.length) {
         if (txt.charAt(letterI) !== ' ' && soundOn === true) {
             let audio = new Audio('resources/sound/voice_sans.mp3');
+            let music = new Audio('resources/sound/Megalovania.mp3');
             audio.play();
+            music.play();
         }
         document.getElementById("text").innerHTML += txt.charAt(letterI);
         letterI++;

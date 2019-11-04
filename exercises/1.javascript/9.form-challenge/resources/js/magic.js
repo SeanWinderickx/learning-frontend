@@ -2,17 +2,17 @@
 
 
 
-function getData() {
+document.getElementById("submit").addEventListener("click", function getData() {
     console.log(firstName);
-}
-/*document.getElementById("submit").addEventListener("click", function getData() {
-    console.log(firstName);
-});*/
+});
 
 let btn = document.getElementById('submit');
 
+btn.onclick = function () {
+    submitForm();
+}
 
-btn.addEventListener('click', function () {
+function submitForm() {
     var firstName = document.getElementById("firstName").value;
     var lastName = document.getElementById("lastName").value;
     var userName = document.getElementById("userName").value;
@@ -36,7 +36,7 @@ btn.addEventListener('click', function () {
     if (email.includes("@gmail.com")) {
         //Nothing yet
     } else {
-        email.replace("")
+        email.replace("l")
     }
 
     //check to see whether or not passwords match
@@ -72,4 +72,4 @@ btn.addEventListener('click', function () {
     // passwordConfirm.onkeyup = validatePassword;
 
 
-})
+}

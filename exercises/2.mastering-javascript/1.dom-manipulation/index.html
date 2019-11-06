@@ -67,10 +67,8 @@
 
                 function message() {
                     if (inputMessage.value == "") {
-                        console.log("Nothin' to see here!");
                         outputMessage.innerHTML = "This box is as empty as your skull.";
                     } else {
-                        console.log("It works!")
                         outputMessage.innerHTML = inputMessage.value;
                     }
                 }
@@ -126,9 +124,19 @@
                 let pizza = document.getElementById("pizza");
                 let size = document.getElementById("size");
 
-                username.addEventListener("keyup", function (e) {
+                let categories = document.querySelectorAll("#pizzaOrders input")
+
+
+                querySelectorAll.addEventListener("keyup", function (e) {
                     if (e.keyCode === 13) {
-                        console.log("The enter key works!")
+                        console.log("The enter key works!");
+                        if (username.value == "" || pizza.value == "" || size.value == "") {
+                            alert("You need to fill in more information!");
+                        } else {
+                            console.log("You filled everything in.");
+                        }
+                    } else {
+                        // nothing
                     }
                 });
             </script>

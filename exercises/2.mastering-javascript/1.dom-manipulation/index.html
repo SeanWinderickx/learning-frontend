@@ -118,27 +118,73 @@
                 </table>
             </div>
             <script>
-                // Write your code here
-
-                let username = document.getElementById("name");
-                let pizza = document.getElementById("pizza");
-                let size = document.getElementById("size");
-
-                let categories = document.querySelectorAll("#pizzaOrders input")
+                let thead = document.querySelector("thead tr");
+                let addHead = thead.insertCell(-1);
+                let inputCell = document.getElementById('emptyRow');
+                let addCell = inputCell.insertCell(-1);
 
 
-                querySelectorAll.addEventListener("keyup", function (e) {
-                    if (e.keyCode === 13) {
-                        console.log("The enter key works!");
-                        if (username.value == "" || pizza.value == "" || size.value == "") {
-                            alert("You need to fill in more information!");
-                        } else {
-                            console.log("You filled everything in.");
+                let pizzaRow = document.querySelectorAll("#emptyRow input");
+
+                //Loop through input
+
+                for (let i = 0; i < pizzaRow.length; i++) {
+
+                    pizzaRow[i].addEventListener("keypress", function (e) {
+                        let key = e.which || e.keyCode;
+
+                        if (key === 13) {
+                            checkRow();
                         }
-                    } else {
-                        // nothing
+                    })
+
+                }
+
+                //////////////////////////////////////////////////////////
+
+                function checkRow() {
+
+                    let tbody = document.querySelector('#pizzaOrders tbody');
+                    let row = tbody.insertRow(0);
+                    let succes = 0;
+
+                    for (let i = 0; i < pizzaRow.length; i++) {
+                        if (pizzaRow[i].value == "" && pizzaRow[i].id !== "remarks") {
+                            alert('You still need to add something')
+                            tbody.deleteRow(0);
+                            break;
+                        } else {
+                            addData(row, pizzaRow[i], i);
+                            succes++;
+                        }
                     }
-                });
+
+                    if (succes == pizzaRow.length) {
+                        for (let i = 0; i < pizzaRow.length; i++) {
+                            pizzaRow[i].value = "";
+                        }
+                        let xCell = row.insertCell(-1);
+                        xCell.innerHTML = "<button type='button'>x</button>";
+
+                        let button = document.querySelector('#pizzaOrders tbody tr button');
+
+                        button.addEventListener('click', function () {
+                            let parent = button.parentNode.parentNode;
+                            parent.parentNode.removeChild(parent);
+                        });
+
+
+                    }
+                }
+
+                //////////////////////////////////////////////////////////
+
+
+                function addData(row, data, index) {
+                    let cell = row.insertCell(index);
+                    cell.innerHTML = data.value;
+
+                }
             </script>
         </div>
         <!-- END OF Part 2 -->

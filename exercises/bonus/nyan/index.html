@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>You'll never see it coming!</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #wrapper {
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+    }
+
+    #catRain {}
+
+    #canvas {
+        border: 1px solid black;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    @keyframes garbage {
+        0% {
+            left: -150px;
+            top: -150px;
+        }
+
+        100% {
+            left: 2500px;
+            top: 1250px;
+        }
+    }
+
+    .morganaImg {
+        width: 150px;
+        height: auto;
+        position: relative;
+    }
+
+    /* 
+    .morganaImgAnimation {
+        animation-name: garbage;
+        animation-duration: 10s;
+        animation-fill-mode: forwards;
+    } */
+</style>
+
+<body>
+    <div id="wrapper">
+        <button type="button" id="btn">Hold It!</button>
+        <div id="catRain">
+        </div>
+    </div>
+
+
+
+    <!-- Script start -->
+    <script>
+        document.getElementById("btn").addEventListener("click", function catFall() {
+            console.log("Cat falling")
+            //appendchild methods
+            let catStorm = document.getElementById("catRain");
+            let additionalImg = document.createElement("IMG");
+            additionalImg.src = "resources/morgana.png";
+            additionalImg.setAttribute("class", "morganaImg");
+            catStorm.appendChild(additionalImg);
+
+
+            //animation details
+            let start = Date.now(); // remember start time
+
+            let timer = setInterval(function () {
+                // how much time passed from the start
+                let timePassed = Date.now() - start;
+
+                if (timePassed >= 10000) {
+                    clearInterval(timer); // finish the animation after 10 seconds
+                    return;
+                }
+
+                // draw the animation at the moment timePassed
+                draw(timePassed);
+            }, 20);
+
+            //as timePassed goes from 0 to 10000
+            // left gets values from 0px to 400px
+            function draw(timePassed) {
+                morganaImg.style.left = timePassed / 5 + 'px';
+                morganaImg.style.top = timePassed / 5 + 'px';
+            }
+
+        });
+    </script>
+</body>
+
+</html>

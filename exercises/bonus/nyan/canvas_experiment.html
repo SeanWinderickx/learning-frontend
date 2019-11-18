@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Morgana</title>
+</head>
+
+<style>
+    #canvas {
+        border: 1px solid black;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    #morganaImg {
+        opacity: 0;
+    }
+</style>
+
+<body>
+    <button type="button" id="btn">Hold It!</button>
+
+    <canvas id="canvas" width="800" height="800">
+        <img src="resources/morgana.png" width="500" height="500">
+    </canvas>
+
+    <!-- <img src="resources/morgana.png" id="morganaImg"> -->
+
+
+    <script>
+        document.getElementById("btn").addEventListener("click", function catFall() {
+            console.log("catfall");
+            let canvas = document.getElementById("canvas");
+            let context = canvas.getContext("2d");
+            const img = new Image();
+            img.src = "resources/morgana.png";
+            img.onload = () => {
+                context.drawImage(img, -150, -150)
+            }
+
+            function animate() {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(img, x, y);
+                x -= 4;
+                if (x > 250) requestAnimationFrame(animate)
+            }
+
+            animate();
+
+
+        });
+    </script>
+</body>
+
+</html>

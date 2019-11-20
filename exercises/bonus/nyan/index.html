@@ -20,10 +20,15 @@
         height: 100%;
     }
 
+    #btn {
+        margin: 20px;
+    }
+
     #wrapper {
         overflow: hidden;
         width: 100%;
         height: 100%;
+        background-size: cover;
     }
 
     #catRain {}
@@ -55,6 +60,9 @@
             additionalImg.setAttribute("class", "morganaImg");
             catStorm.appendChild(additionalImg);
 
+            let wrapper = document.getElementById("wrapper");
+            wrapper.style.backgroundImage = "url('resources/city.jpg')";
+
 
             //animation details
             let start = Date.now(); // remember start time
@@ -63,7 +71,7 @@
                 // how much time passed from the start
                 let timePassed = Date.now() - start;
 
-                if (timePassed >= 3000) {
+                if (timePassed >= 10000) {
                     clearInterval(timer); // finish the animation after 10 seconds
                     return;
                 }
@@ -76,8 +84,11 @@
             // left gets values from 0px to 400px
             function draw(timePassed) {
                 let morganaImg = document.querySelectorAll(".morganaImg");
-                morganaImg[0].style.left = timePassed / 5 + 'px';
-                morganaImg[0].style.top = timePassed / 5 + 'px';
+                let i;
+                for (i = 0; i < morganaImg.length; i++) {
+                    morganaImg[i].style.left = timePassed / 5 + 'px';
+                    morganaImg[i].style.top = timePassed / 5 + 'px';
+                }
             }
 
         });

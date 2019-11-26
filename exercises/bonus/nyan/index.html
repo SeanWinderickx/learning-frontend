@@ -51,14 +51,18 @@
 
     <!-- Script start -->
     <script>
-        document.getElementById("btn").addEventListener("click", function () {
-            console.log("Cat falling")
-            //appendchild methods
+        function catFall() {
             let catStorm = document.getElementById("catRain");
             let additionalImg = document.createElement("IMG");
             additionalImg.src = "resources/morgana.png";
             additionalImg.setAttribute("class", "morganaImg");
             catStorm.appendChild(additionalImg);
+        }
+
+        document.getElementById("btn").addEventListener("click", function () {
+            console.log("Cat falling")
+
+            catFall();
 
             let wrapper = document.getElementById("wrapper");
             wrapper.style.backgroundImage = "url('resources/city.jpg')";
@@ -71,7 +75,7 @@
                 // how much time passed from the start
                 let timePassed = Date.now() - start;
 
-                if (timePassed >= 10000) {
+                if (timePassed >= 5000) {
                     clearInterval(timer); // finish the animation after 10 seconds
                     return;
                 }
